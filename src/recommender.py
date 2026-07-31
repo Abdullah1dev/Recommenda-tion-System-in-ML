@@ -1,4 +1,4 @@
-from src.recommender import items
+from data.items import items
 
 
 user_preferences = [
@@ -6,9 +6,6 @@ user_preferences = [
     "AI",
     "Machine Learning"
 ]
-
-def get_top_recommendations(recommendations , n=3):
-    return recommendations[:n]
 
 
 def calculate_match_score(user_preferences, item_tags):
@@ -23,8 +20,15 @@ def calculate_match_score(user_preferences, item_tags):
     return match_count
 
 
+def get_top_recommendations(recommendations, n=3):
+
+    return recommendations[:n]
+
+
 recommendations = []
 
+
+# Calculate score for every item
 for item in items:
 
     score = calculate_match_score(
@@ -36,29 +40,27 @@ for item in items:
         "name": item["name"],
         "score": score
     })
-    
-    recommendations.sort(
+
+
+# Sort all recommendations
+recommendations.sort(
     key=lambda item: item["score"],
     reverse=True
 )
-    
-    top_recommendations = get_top_recommendations(
+
+
+# Get Top 3
+top_recommendations = get_top_recommendations(
     recommendations,
     n=3
 )
 
 
-
-
-for recommendation in recommendations:
+# Print ONLY Top 3
+for recommendation in top_recommendations:
 
     print(
         recommendation["name"],
         "→",
         recommendation["score"]
     )
-    
-    
-
-
-

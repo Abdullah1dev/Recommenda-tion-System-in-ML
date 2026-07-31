@@ -1,52 +1,4 @@
-items = [
-    {
-        "id": 1,
-        "name": "Python for Beginners",
-        "tags": ["Python", "Programming"]
-    },
-
-    {
-        "id": 2,
-        "name": "Machine Learning Fundamentals",
-        "tags": ["Python", "Machine Learning", "AI"]
-    },
-
-    {
-        "id": 3,
-        "name": "Deep Learning with Python",
-        "tags": ["Python", "Deep Learning", "AI"]
-    },
-
-    {
-        "id": 4,
-        "name": "Web Development Basics",
-        "tags": ["HTML", "CSS", "JavaScript", "Web Development"]
-    },
-
-    {
-        "id": 5,
-        "name": "Natural Language Processing",
-        "tags": ["Python", "NLP", "AI"]
-    },
-
-    {
-        "id": 6,
-        "name": "Computer Vision Fundamentals",
-        "tags": ["Python", "Computer Vision", "AI"]
-    },
-
-    {
-        "id": 7,
-        "name": "Data Science with Python",
-        "tags": ["Python", "Data Science", "Pandas"]
-    },
-
-    {
-        "id": 8,
-        "name": "Cyber Security Basics",
-        "tags": ["Networking", "Security", "Cyber Security"]
-    }
-]
+from data.items import items
 
 
 user_preferences = [
@@ -64,11 +16,41 @@ def calculate_match_score(user_preferences, item_tags):
 
         if preference in item_tags:
             match_count += 1
+            
+            
+    if not user_preferences:
+        return 0
+            
+        
+    match_percentage = (
+        
+        match_count / len(user_preferences)
+        
+        ) * 100
+                
+                
+            
+        
 
-    return match_count
+    return match_percentage
+
+
+def filter_recommendations(recommendations):
+
+    return [
+        item
+        for item in recommendations
+        if item["score"] > 0
+    ]
+
+
+def get_top_recommendations(recommendations, n=3):
+
+    return recommendations[:n]
 
 
 recommendations = []
+
 
 for item in items:
 
@@ -83,16 +65,36 @@ for item in items:
     })
 
 
+# 1. Sort
 recommendations.sort(
     key=lambda item: item["score"],
     reverse=True
 )
 
 
-for recommendation in recommendations:
+# 2. Remove irrelevant items
+filtered_recommendations = filter_recommendations(
+    recommendations
+)
 
-    print(
-        recommendation["name"],
-        "→",
-        recommendation["score"]
-    )
+
+# 3. Select Top-N
+top_recommendations = get_top_recommendations(
+    filtered_recommendations,
+    n=3
+)
+
+
+# 4. Display
+if not top_recommendations:
+    print("No top recommendations found.")
+else:
+    for recommendation in top_recommendations:
+        print(
+                recommendation["name"],
+                "→",
+                recommendation["score"]
+            )
+            
+
+    
