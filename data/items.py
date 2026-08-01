@@ -1,49 +1,79 @@
 items = [
     {
-        "id": 1,
         "name": "Python for Beginners",
-        "tags": ["Python", "Programming"]
+        "tags": [
+            "Python",
+            "Programming",
+            "Beginner"
+        ]
     },
 
     {
-        "id": 2,
         "name": "Machine Learning Fundamentals",
-        "tags": ["Python", "Machine Learning", "AI"]
+        "tags": [
+            "Python",
+            "AI",
+            "Machine Learning",
+            "Data Science"
+        ]
     },
 
     {
-        "id": 3,
         "name": "Deep Learning with Python",
-        "tags": ["Python", "Deep Learning", "AI"]
+        "tags": [
+            "Python",
+            "AI",
+            "Machine Learning",
+            "Deep Learning"
+        ]
     },
 
     {
-        "id": 4,
-        "name": "Web Development Basics",
-        "tags": ["HTML", "CSS", "JavaScript", "Web Development"]
-    },
-
-    {
-        "id": 5,
         "name": "Natural Language Processing",
-        "tags": ["Python", "NLP", "AI"]
+        "tags": [
+            "AI",
+            "Machine Learning",
+            "NLP",
+            "Python"
+        ]
     },
 
     {
-        "id": 6,
         "name": "Computer Vision Fundamentals",
-        "tags": ["Python", "Computer Vision", "AI"]
+        "tags": [
+            "AI",
+            "Machine Learning",
+            "Computer Vision",
+            "Python"
+        ]
     },
 
     {
-        "id": 7,
         "name": "Data Science with Python",
-        "tags": ["Python", "Data Science", "Pandas"]
+        "tags": [
+            "Python",
+            "Data Science",
+            "Pandas",
+            "Machine Learning"
+        ]
     },
 
     {
-        "id": 8,
+        "name": "Web Development Basics",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Web Development"
+        ]
+    },
+
+    {
         "name": "Cyber Security Basics",
-        "tags": ["Networking", "Security", "Cyber Security"]
+        "tags": [
+            "Cyber Security",
+            "Networking",
+            "Security"
+        ]
     }
 ]
