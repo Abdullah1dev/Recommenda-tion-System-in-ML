@@ -1,38 +1,32 @@
 from data.items import items
 
 
-user_preferences = [
-    "Python",
-    "AI",
-    "Machine Learning"
-]
+user_preferences = {
+    "Python": 2,
+    "AI": 3,
+    "Machine Learning": 5
+}
 
 
 def calculate_match_score(user_preferences, item_tags):
 
-    match_count = 0
-
-    for preference in user_preferences:
-
-        if preference in item_tags:
-            match_count += 1
-            
-            
     if not user_preferences:
         return 0
-            
-        
-    match_percentage = (
-        
-        match_count / len(user_preferences)
-        
-        ) * 100
-                
-                
-            
-        
 
-    return match_percentage
+    score = 0
+
+    for preference, weight in user_preferences.items():
+
+        if preference in item_tags:
+            score += weight
+
+    total_weight = sum(user_preferences.values())
+
+    match_percentage = (
+        score / total_weight
+    ) * 100
+
+    return round(match_percentage, 2)
 
 
 def filter_recommendations(recommendations):
@@ -65,36 +59,32 @@ for item in items:
     })
 
 
-# 1. Sort
+# Sort
 recommendations.sort(
     key=lambda item: item["score"],
     reverse=True
 )
 
 
-# 2. Remove irrelevant items
+# Remove irrelevant recommendations
 filtered_recommendations = filter_recommendations(
     recommendations
 )
 
 
-# 3. Select Top-N
+# Get Top-N
 top_recommendations = get_top_recommendations(
     filtered_recommendations,
     n=3
 )
 
 
-# 4. Display
-if not top_recommendations:
-    print("No top recommendations found.")
-else:
-    for recommendation in top_recommendations:
-        print(
-                recommendation["name"],
-                "→",
-                recommendation["score"]
-            )
-            
+# Display
+for recommendation in top_recommendations:
 
-    
+    print(
+        recommendation["name"],
+        "→",
+        recommendation["score"],
+        "%"
+    )
