@@ -227,13 +227,7 @@ if st.button(
                     )
 
 
-# ============================================================
-# FOOTER
-# ============================================================
+
 
 st.divider()
 
-st.caption(
-    "Built with Python, Streamlit and a "
-    "content-based recommendation engine."
-)
